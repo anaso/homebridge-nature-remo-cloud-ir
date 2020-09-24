@@ -1,16 +1,16 @@
 {
   "private": true,
-  "displayName": "Plugin Name",
-  "name": "homebridge-plugin-name",
+  "displayName": "Homebridge Nature Remo CloudIR",
+  "name": "@anaso/homebridge-nature-remo-cloud-ir",
   "version": "1.0.0",
-  "description": "A short description about what your plugin does.",
+  "description": "Nature RemoのクラウドAPIを使用して記録したIRシグナルを送信したい",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/USERNAME/GITHUB_PROJECT_NAME.git"
+    "url": "https://github.com/anaso/Homebridge-Nature-Remo-CloudIR.git"
   },
   "bugs": {
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME/issues"
+    "url": "https://github.com/anaso/Homebridge-Nature-Remo-CloudIR/issues"
   },
   "engines": {
     "node": ">=10.17.0",
