@@ -1,0 +1,11 @@
+{
+    "accessories": [
+        {
+            "accessory": "AnasoNatureRemoCloudIR",
+            "name": "Light",
+            "accessToken": "Your access taken",
+            "onSignalId": "Your ON ID (signals -> id)",
+            "offSignalId": "Your OFF ID (signals -> id)"
+        }
+    ]
+}
