@@ -1,6 +1,10 @@
 # Ignore compiled code
 dist
 
+.github
+.vscode
+tsconfig.json
+
 # ------------- Defaults ------------- #
 
 # Logs
@@ -113,7 +117,6 @@ dist
 .vscode-test
 
 # yarn v2
-
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
