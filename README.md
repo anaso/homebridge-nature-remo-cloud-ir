@@ -2,7 +2,7 @@
 ## Nature remo に登録済みの赤外線信号をHomebridge経由で送信するためのツール
 
 ### 使い方
-- 公式アプリ等を使用して赤外線信号を登録しておきます。
+- まずは公式アプリ等を使用して赤外線信号を登録しておきます。
 - [https://home.nature.global/home](https://home.nature.global/home) に接続してアクセストークンを取得します。
 - ` curl -X GET "https://api.nature.global/1/appliances" -H "authorization: Bearer <アクセストークン>" `へ接続し、問題無ければ一覧が帰ってきます。
  ```
@@ -39,3 +39,4 @@
     }
 ]
 ```
+- 問題無ければ動いてくれるはず！
