@@ -36,6 +36,7 @@ import got from 'got';
  * of the api object, which can be acquired for example in the initializer function. This reference can be stored
  * like this for example and used to access all exported variables and classes from HAP-NodeJS.
  */
+
 let hap: HAP;
 
 /*
@@ -55,7 +56,7 @@ class AnasoNatureRemoCloudIR implements AccessoryPlugin {
 
   private readonly log: Logging;
   private readonly name: string;
-  private switchOn = false;
+  private switchState = false;
 
   private readonly switchService: Service;
   private readonly informationService: Service;
@@ -76,33 +77,38 @@ class AnasoNatureRemoCloudIR implements AccessoryPlugin {
 
     this.switchService.getCharacteristic(hap.Characteristic.On)
       .on(CharacteristicEventTypes.GET, (callback: CharacteristicGetCallback) => {
-        log.info('Current state of the switch was returned: ' + (this.switchOn ? 'ON' : 'OFF'));
-        callback(undefined, this.switchOn);
+        log.info('Current state of the switch was returned: ' + (this.switchState ? 'ON' : 'OFF'));
+        callback(undefined, this.switchState);
       })
 
       .on(CharacteristicEventTypes.SET, (value: CharacteristicValue, callback: CharacteristicSetCallback) => {
-        this.switchOn = value as boolean;
-        // log.info('Switch state was set to: ' + (this.switchOn ? 'ON' : 'OFF'));
+        if (this.switchState === value as boolean) {
+          log.info('Keep state: ' + (this.switchState ? 'ON' : 'OFF') + ' No send signal');
+          callback();
+        } else {
+          this.switchState = value as boolean;
+          // log.info('Switch state was set to: ' + (this.switchState ? 'ON' : 'OFF'));
 
-        const ENDPOINTT_TO_POST = this.switchOn
-          ? 'https://api.nature.global/1/signals/' + this.onSignalId + '/send'
-          : 'https://api.nature.global/1/signals/' + this.offSignalId + '/send';
+          const ENDPOINTT_TO_POST = this.switchState
+            ? 'https://api.nature.global/1/signals/' + this.onSignalId + '/send'
+            : 'https://api.nature.global/1/signals/' + this.offSignalId + '/send';
 
-        (async () => {
-          try {
-            const body = await got.post(ENDPOINTT_TO_POST, {
-              headers: {
-                'Authorization': `Bearer ${this.accessToken}`,
-              },
-            });
-            callback();
+          (async () => {
+            try {
+              const body = await got.post(ENDPOINTT_TO_POST, {
+                headers: {
+                  'Authorization': `Bearer ${this.accessToken}`,
+                },
+              });
+              callback();
 
-          } catch (e) {
-            log.info(`StateTo: ${!this.switchOn}   ERROR: \n${JSON.stringify(e)}`);
-            this.switchService.updateCharacteristic(hap.Characteristic.On, !this.switchOn);
-            callback(e);
-          }
-        })();
+            } catch (e) {
+              log.info(`StateTo: ${!this.switchState}   ERROR: \n${JSON.stringify(e)}`);
+              this.switchService.updateCharacteristic(hap.Characteristic.On, !this.switchState);
+              callback(e);
+            }
+          })();
+        }
       });
 
     this.informationService = new hap.Service.AccessoryInformation()
