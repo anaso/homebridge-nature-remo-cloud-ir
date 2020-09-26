@@ -1,9 +1,10 @@
 # Ignore compiled code
 dist
 
-.github
-.vscode
+.github/
+.vscode/
 tsconfig.json
+nodemon.json
 
 # ------------- Defaults ------------- #
 
