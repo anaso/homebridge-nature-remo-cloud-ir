@@ -2,7 +2,7 @@
   "private": true,
   "displayName": "Homebridge Nature Remo CloudIR",
   "name": "@anaso/homebridge-nature-remo-cloud-ir",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Nature RemoのクラウドAPIを使用して記録したIRシグナルを送信したい",
   "license": "Apache-2.0",
   "repository": {
