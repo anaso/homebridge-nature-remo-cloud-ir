@@ -1,6 +1,9 @@
 # Homebridge Nature remo Cloud IR
 ## Nature remo に登録済みの赤外線信号をHomebridge経由で送信するためのツール
 
+### こちらのテンプレートを使用しています。
+[homebridge/homebridge\-plugin\-template: A template you can use to create your own Homebridge plugins\.](https://github.com/homebridge/homebridge-plugin-template)
+
 ### 使い方
 - まずは公式アプリ等を使用して赤外線信号を登録しておきます。
 - [https://home.nature.global/home](https://home.nature.global/home) に接続してアクセストークンを取得します。
