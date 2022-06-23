@@ -27,7 +27,7 @@
     "homebridge-plugin"
   ],
   "dependencies": {
-    "got": "^11.7.0"
+    "got": "^11.8.5"
   },
   "devDependencies": {
     "@types/node": "^14.10.3",
